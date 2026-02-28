@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>けん玉部 出欠管理アプリ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>けん玉部 出欠管理</h1>
+
+    <h2 id="todayDate"></h2>
+
+    <input type="text" id="nameInput" placeholder="名前を入力">
+
+    <div class="button-group">
+      <button onclick="markAttendance('出席')">出席</button>
+      <button onclick="showReasonForm()">欠席</button>
+    </div>
+
+    <!-- 欠席理由フォーム（最初は非表示） -->
+    <div id="reasonForm" style="display:none; margin-top:15px;">
+      <h3>欠席理由を選択してください</h3>
+
+      <select id="reasonSelect">
+        <option value="">選択してください</option>
+        <option value="予定が合わない">予定が合わない</option>
+        <option value="アルバイト">アルバイト</option>
+        <option value="開催場所が遠い">開催場所が遠い</option>
+        <option value="その他">その他</option>
+      </select>
+
+      <br><br>
+      <button onclick="submitAbsent()">送信</button>
+    </div>
+
+    <h2>一覧</h2>
+    <h2>曜日別出席率</h2>
+<canvas id="dayChart" width="400" height="200"></canvas>
+
+<h2>欠席理由ランキング</h2>
+<canvas id="reasonChart" width="400" height="200"></canvas>
+    <ul id="attendanceList"></ul>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<button onclick="downloadCSV()">CSVダウンロード</button>
+</body>
+</html>
